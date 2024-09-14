@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:todo/pages/home.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(ProviderScope(child: const MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -16,4 +17,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
