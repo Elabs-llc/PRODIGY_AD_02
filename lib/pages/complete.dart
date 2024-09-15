@@ -26,21 +26,41 @@ class CompletedTodo extends ConsumerWidget {
       body: ListView.builder(
           itemCount: completedTodo.length,
           itemBuilder: (context, index) {
-            return Slidable(
-              startActionPane: ActionPane(motion: ScrollMotion(), children: [
-                SlidableAction(
-                  onPressed: (context) =>
-                      ref.watch(todoProvider.notifier).deleteTodo(index),
-                  icon: Icons.delete,
-                  backgroundColor: Colors.redAccent,
+            if (completedTodo.isEmpty) {
+              return const Padding(
+                padding: EdgeInsets.only(top: 300.0),
+                child: Center(
+                  child: Text(
+                      "No Completed Todos Available, add new one using the  button below!"),
                 ),
-              ]),
-              child: ListTile(
-                title: Text(completedTodo[index].todoTitle),
-                subtitle: Text(completedTodo[index].todoDescription),
-                contentPadding: EdgeInsets.all(5),
-              ),
-            );
+              );
+            } else {
+              return Slidable(
+                startActionPane:
+                    ActionPane(motion: const ScrollMotion(), children: [
+                  SlidableAction(
+                    onPressed: (context) => ref
+                        .watch(todoProvider.notifier)
+                        .deleteTodo(completedTodo[index].todoId),
+                    icon: Icons.delete,
+                    backgroundColor: Colors.redAccent,
+                  ),
+                ]),
+                child: Container(
+                  padding: const EdgeInsets.all(5),
+                  margin: const EdgeInsets.all(8),
+                  decoration: BoxDecoration(
+                    color: const Color.fromARGB(71, 249, 245, 134),
+                    borderRadius: BorderRadius.circular(5),
+                  ),
+                  child: ListTile(
+                    title: Text(completedTodo[index].todoTitle),
+                    subtitle: Text(completedTodo[index].todoDescription),
+                    contentPadding: const EdgeInsets.all(5),
+                  ),
+                ),
+              );
+            }
           }),
     );
   }

@@ -43,6 +43,14 @@ class AddTodo extends ConsumerWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
+            const Text(
+              "Todo Title",
+              style: TextStyle(
+                fontSize: 18.0,
+                fontWeight: FontWeight.bold,
+              ),
+              textAlign: TextAlign.left,
+            ),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: TextField(
@@ -55,10 +63,19 @@ class AddTodo extends ConsumerWidget {
             const SizedBox(
               height: 20,
             ),
+            const Text(
+              "Todo Content",
+              style: TextStyle(
+                fontSize: 18.0,
+                fontWeight: FontWeight.bold,
+              ),
+              textAlign: TextAlign.left,
+            ),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: TextField(
                 controller: contentController,
+                maxLines: 10,
                 decoration: const InputDecoration(
                   border: OutlineInputBorder(),
                 ),
@@ -68,6 +85,13 @@ class AddTodo extends ConsumerWidget {
                 onPressed: () {
                   _addTodo(ref, titleController, contentController, context);
                 },
+                style: const ButtonStyle(
+                    backgroundColor: WidgetStatePropertyAll(Colors.black),
+                    padding: WidgetStatePropertyAll(EdgeInsets.all(20)),
+                    textStyle: WidgetStatePropertyAll(TextStyle(
+                      color: Colors.white,
+                      fontSize: 18.0,
+                    ))),
                 child: const Text("Add Todo"))
           ],
         ),

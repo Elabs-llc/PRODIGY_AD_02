@@ -31,11 +31,11 @@ class MyHomePage extends ConsumerWidget {
         title: const Text("Todo"),
         actions: [
           completedTodo.isEmpty
-              ? Text("")
+              ? const Text("")
               : IconButton(
                   onPressed: () => Navigator.of(context).push(MaterialPageRoute(
                       builder: (context) => const CompletedTodo())),
-                  icon: Icon(Icons.note_rounded),
+                  icon: const Icon(Icons.note_rounded),
                   color: Colors.green,
                   tooltip: "Completed Todo",
                 ),
@@ -44,7 +44,15 @@ class MyHomePage extends ConsumerWidget {
       body: ListView.builder(
           itemCount: activeTodos.length + 1,
           itemBuilder: (context, index) {
-            if (index == activeTodos.length) {
+            if (activeTodos.isEmpty) {
+              return const Padding(
+                padding: EdgeInsets.only(top: 300.0),
+                child: Center(
+                  child: Text(
+                      "No Todos Available, add new one using the  button below!"),
+                ),
+              );
+            } else if (index == activeTodos.length) {
               if (completedTodo.isEmpty) {
                 return Container();
               } else {
@@ -53,31 +61,43 @@ class MyHomePage extends ConsumerWidget {
                       onPressed: () => Navigator.of(context).push(
                           MaterialPageRoute(
                               builder: (context) => const CompletedTodo())),
-                      child: Text("Completed Todos")),
+                      child: const Text("Completed Todos")),
                 );
               }
             } else {
               return Slidable(
-                startActionPane: ActionPane(motion: ScrollMotion(), children: [
+                startActionPane:
+                    ActionPane(motion: const ScrollMotion(), children: [
                   SlidableAction(
-                    onPressed: (context) =>
-                        ref.watch(todoProvider.notifier).deleteTodo(index),
+                    onPressed: (context) => ref
+                        .watch(todoProvider.notifier)
+                        .deleteTodo(activeTodos[index].todoId),
                     icon: Icons.delete,
                     backgroundColor: Colors.redAccent,
                   ),
                 ]),
-                endActionPane: ActionPane(motion: ScrollMotion(), children: [
+                endActionPane:
+                    ActionPane(motion: const ScrollMotion(), children: [
                   SlidableAction(
-                    onPressed: (context) =>
-                        ref.watch(todoProvider.notifier).completeTodo(index),
+                    onPressed: (context) => ref
+                        .watch(todoProvider.notifier)
+                        .completeTodo(activeTodos[index].todoId),
                     icon: Icons.check_circle_outline,
                     backgroundColor: Colors.lightGreen,
                   ),
                 ]),
-                child: ListTile(
-                  title: Text(activeTodos[index].todoTitle),
-                  subtitle: Text(activeTodos[index].todoDescription),
-                  contentPadding: EdgeInsets.all(5),
+                child: Container(
+                  padding: const EdgeInsets.all(5),
+                  margin: const EdgeInsets.all(8),
+                  decoration: BoxDecoration(
+                    color: const Color.fromARGB(71, 249, 245, 134),
+                    borderRadius: BorderRadius.circular(5),
+                  ),
+                  child: ListTile(
+                    title: Text(activeTodos[index].todoTitle),
+                    subtitle: Text(activeTodos[index].todoDescription),
+                    contentPadding: const EdgeInsets.all(5),
+                  ),
                 ),
               );
             }
@@ -87,6 +107,8 @@ class MyHomePage extends ConsumerWidget {
           Navigator.of(context)
               .push(MaterialPageRoute(builder: (context) => const AddTodo()));
         },
+        backgroundColor: Colors.black,
+        foregroundColor: Colors.white,
         tooltip: 'New Todo',
         child: const Icon(Icons.add),
       ),
