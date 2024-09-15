@@ -29,6 +29,17 @@ class MyHomePage extends ConsumerWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Todo"),
+        actions: [
+          completedTodo.isEmpty
+              ? Text("")
+              : IconButton(
+                  onPressed: () => Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => const CompletedTodo())),
+                  icon: Icon(Icons.note_rounded),
+                  color: Colors.green,
+                  tooltip: "Completed Todo",
+                ),
+        ],
       ),
       body: ListView.builder(
           itemCount: activeTodos.length + 1,

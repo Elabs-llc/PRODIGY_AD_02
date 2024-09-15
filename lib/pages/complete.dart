@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:todo/models/todo_model.dart';
-import 'package:todo/pages/add.dart';
 import 'package:todo/providers/todo_provider.dart';
 
 class CompletedTodo extends ConsumerWidget {
@@ -22,7 +21,7 @@ class CompletedTodo extends ConsumerWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Todo"),
+        title: const Text("Completed Todos"),
       ),
       body: ListView.builder(
           itemCount: completedTodo.length,
@@ -43,14 +42,6 @@ class CompletedTodo extends ConsumerWidget {
               ),
             );
           }),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.of(context)
-              .push(MaterialPageRoute(builder: (context) => const AddTodo()));
-        },
-        tooltip: 'New Todo',
-        child: const Icon(Icons.add),
-      ),
     );
   }
 }
