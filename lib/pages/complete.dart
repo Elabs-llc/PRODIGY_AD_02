@@ -12,6 +12,7 @@ class CompletedTodo extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     // Get all todos
     List<TodoModel> todos = ref.watch(todoProvider);
+
     // completed todo list
     List<TodoModel> completedTodo = todos
         .where(

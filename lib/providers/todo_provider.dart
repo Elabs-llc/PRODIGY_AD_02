@@ -30,7 +30,7 @@ class TodoListNotifier extends StateNotifier<List<TodoModel>> {
               todoId: todo.todoId,
               todoTitle: todo.todoTitle,
               todoDescription: todo.todoDescription,
-              isCompleted: todo.isCompleted)
+              isCompleted: true)
         else
           todo
     ];
