@@ -22,7 +22,7 @@ class TodoListNotifier extends StateNotifier<List<TodoModel>> {
   }
 
   // complete todo
-  void completeTod(int id) {
+  void completeTodo(int id) {
     state = [
       for (final todo in state)
         if (todo.todoId == id)

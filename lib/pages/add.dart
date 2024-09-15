@@ -13,8 +13,9 @@ class AddTodo extends ConsumerWidget {
           .addTodo(titleController.text, contentController.text);
       titleController.clear();
       contentController.clear();
+      Navigator.pop(context);
     } else {
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
         content: Text("Please fill in the title and content"),
       ));
     }
@@ -22,18 +23,18 @@ class AddTodo extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    TextEditingController titleController = new TextEditingController();
-    TextEditingController contentController = new TextEditingController();
+    TextEditingController titleController = TextEditingController();
+    TextEditingController contentController = TextEditingController();
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Add Todo'),
+        title: const Text('Add Todo'),
         actions: [
           IconButton(
-            icon: Icon(Icons.add),
+            icon: const Icon(Icons.add),
+            tooltip: "Save Todo",
             onPressed: () {
               _addTodo(ref, titleController, contentController, context);
-              Navigator.pop(context);
             },
           ),
         ],
@@ -46,19 +47,19 @@ class AddTodo extends ConsumerWidget {
               padding: const EdgeInsets.all(8.0),
               child: TextField(
                 controller: titleController,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   border: OutlineInputBorder(),
                 ),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: TextField(
                 controller: contentController,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   border: OutlineInputBorder(),
                 ),
               ),
@@ -66,9 +67,8 @@ class AddTodo extends ConsumerWidget {
             TextButton(
                 onPressed: () {
                   _addTodo(ref, titleController, contentController, context);
-                  Navigator.pop(context);
                 },
-                child: Text("Add Todo"))
+                child: const Text("Add Todo"))
           ],
         ),
       ),
