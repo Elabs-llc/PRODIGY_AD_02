@@ -27,6 +27,7 @@ class AddTodo extends ConsumerWidget {
     TextEditingController contentController = TextEditingController();
 
     return Scaffold(
+      backgroundColor: Colors.yellow[200],
       appBar: AppBar(
         title: const Text('Add Todo'),
         actions: [
@@ -86,7 +87,7 @@ class AddTodo extends ConsumerWidget {
                   _addTodo(ref, titleController, contentController, context);
                 },
                 style: const ButtonStyle(
-                    backgroundColor: WidgetStatePropertyAll(Colors.black),
+                    backgroundColor: WidgetStatePropertyAll(Colors.yellow),
                     padding: WidgetStatePropertyAll(EdgeInsets.all(20)),
                     textStyle: WidgetStatePropertyAll(TextStyle(
                       color: Colors.white,

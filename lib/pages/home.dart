@@ -27,6 +27,7 @@ class MyHomePage extends ConsumerWidget {
         .toList();
 
     return Scaffold(
+      backgroundColor: Colors.yellow[200],
       appBar: AppBar(
         title: const Text("Todo"),
         actions: [
@@ -90,7 +91,7 @@ class MyHomePage extends ConsumerWidget {
                   padding: const EdgeInsets.all(5),
                   margin: const EdgeInsets.all(8),
                   decoration: BoxDecoration(
-                    color: const Color.fromARGB(71, 249, 245, 134),
+                    color: Colors.yellow[400],
                     borderRadius: BorderRadius.circular(5),
                   ),
                   child: ListTile(
@@ -107,9 +108,10 @@ class MyHomePage extends ConsumerWidget {
           Navigator.of(context)
               .push(MaterialPageRoute(builder: (context) => const AddTodo()));
         },
-        backgroundColor: Colors.black,
-        foregroundColor: Colors.white,
+        backgroundColor: Colors.yellow,
+        foregroundColor: Colors.black,
         tooltip: 'New Todo',
+        elevation: 2.0,
         child: const Icon(Icons.add),
       ),
     );

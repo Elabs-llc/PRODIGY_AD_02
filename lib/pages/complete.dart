@@ -20,6 +20,7 @@ class CompletedTodo extends ConsumerWidget {
         .toList();
 
     return Scaffold(
+      backgroundColor: Colors.yellow[200],
       appBar: AppBar(
         title: const Text("Completed Todos"),
       ),
@@ -50,7 +51,7 @@ class CompletedTodo extends ConsumerWidget {
                   padding: const EdgeInsets.all(5),
                   margin: const EdgeInsets.all(8),
                   decoration: BoxDecoration(
-                    color: const Color.fromARGB(71, 249, 245, 134),
+                    color: Colors.yellow[400],
                     borderRadius: BorderRadius.circular(5),
                   ),
                   child: ListTile(
