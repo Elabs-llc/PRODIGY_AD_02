@@ -23,7 +23,7 @@
 -	
 -	1. **Clone the Repository**:
 -	   ```bash
--	   Git clone [https://github.com/Elabs-llc/PRODIGY_AD_02.git](https://github.com/Elabs-llc/PRODIGY_AD_02.git)
+-	   Git clone (https://github.com/Elabs-llc/PRODIGY_AD_02.git)
 -	   Cd todo_app
 -	   ```
 -	
