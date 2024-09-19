@@ -5,7 +5,7 @@ import 'package:todo/models/todo_model.dart';
 class DatabaseHelper {
   static const int _dbVersion = 1;
   static const String _dbName = 'todoapp.db';
-  static const String _tblName = 'todo_db';
+  static const String _tblName = 'todos';
 
   static Future<Database> getDatabase() async {
     return openDatabase(join(await getDatabasesPath(), _dbName),
