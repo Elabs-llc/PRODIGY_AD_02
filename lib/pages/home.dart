@@ -46,11 +46,20 @@ class MyHomePage extends ConsumerWidget {
           itemCount: activeTodos.length + 1,
           itemBuilder: (context, index) {
             if (activeTodos.isEmpty) {
-              return const Padding(
-                padding: EdgeInsets.only(top: 300.0),
-                child: Center(
-                  child: Text(
-                      "No Todos Available, add new one using the  button below!"),
+              return Padding(
+                padding: const EdgeInsets.only(top: 300.0),
+                child: Column(
+                  children: [
+                    Image.asset(
+                      'assets/images/box_15052282.png',
+                      width: 130.0,
+                      height: 130.0,
+                    ),
+                    const Text(
+                      "No Todos Available, add new one using the  button below!",
+                      style: TextStyle(fontSize: 20.0),
+                    ),
+                  ],
                 ),
               );
             } else if (index == activeTodos.length) {
