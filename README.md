@@ -46,7 +46,12 @@
 -	     ```bash
 -	     Flutter run -d chrome
 -	     ```
--	
+-	## Images
+-	![image](assets/images/1.png)
+-	![image](assets/images/2.png)
+-	![image](assets/images/3.png)
+-	![image](assets/images/4.png)
+-	![image](assets/images/5.png)
 -	## Usage
 -	
 -	1. Launch the app on your desired platform.

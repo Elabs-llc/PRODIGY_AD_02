@@ -55,9 +55,15 @@ class MyHomePage extends ConsumerWidget {
                       width: 130.0,
                       height: 130.0,
                     ),
-                    const Text(
-                      "No Todos Available, add new one using the  button below!",
-                      style: TextStyle(fontSize: 20.0),
+                    const Padding(
+                      padding: EdgeInsets.all(8.0),
+                      child: Text(
+                        "No Todos Available, add new one using the  button below!",
+                        style: TextStyle(
+                          fontSize: 20.0,
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
                     ),
                   ],
                 ),
