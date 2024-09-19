@@ -65,9 +65,4 @@
 -	## Acknowledgments
 -	
 -	Thank you to the Flutter community for their invaluable resources and support in the development of this application.
--	
--	---
--	
--	Feel free to reach out for any questions, suggestions, or feedback! Happy coding!
 
--	
