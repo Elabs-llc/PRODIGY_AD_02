@@ -1,4 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:todo/data/helper.dart';
 import 'package:todo/models/todo_model.dart';
 
 final todoProvider =
@@ -13,10 +14,11 @@ class TodoListNotifier extends StateNotifier<List<TodoModel>> {
     state = [
       ...state,
       TodoModel(
-        todoId: state.isEmpty ? 0 : state[state.length - 1].todoId + 1,
+        todoId: state.isEmpty ? 0 : state[state.length - 1].todoId! + 1,
         todoTitle: title,
         todoDescription: content,
         isCompleted: false,
+        dateAdded: Helper.getDate(),
       )
     ];
   }
@@ -30,7 +32,8 @@ class TodoListNotifier extends StateNotifier<List<TodoModel>> {
               todoId: todo.todoId,
               todoTitle: todo.todoTitle,
               todoDescription: todo.todoDescription,
-              isCompleted: true)
+              isCompleted: true,
+              dateAdded: Helper.getDate())
         else
           todo
     ];

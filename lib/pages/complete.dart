@@ -22,47 +22,50 @@ class CompletedTodo extends ConsumerWidget {
     return Scaffold(
       backgroundColor: Colors.yellow[200],
       appBar: AppBar(
+        backgroundColor: const Color.fromARGB(255, 243, 220, 12),
         title: const Text("Completed Todos"),
       ),
-      body: ListView.builder(
-          itemCount: completedTodo.length,
-          itemBuilder: (context, index) {
-            if (completedTodo.isEmpty) {
-              return const Padding(
-                padding: EdgeInsets.only(top: 300.0),
-                child: Center(
-                  child: Text(
-                      "No Completed Todos Available, add new one using the  button below!"),
-                ),
-              );
-            } else {
-              return Slidable(
-                startActionPane:
-                    ActionPane(motion: const ScrollMotion(), children: [
-                  SlidableAction(
-                    onPressed: (context) => ref
-                        .watch(todoProvider.notifier)
-                        .deleteTodo(completedTodo[index].todoId),
-                    icon: Icons.delete,
-                    backgroundColor: Colors.redAccent,
+      body: SafeArea(
+        child: ListView.builder(
+            itemCount: completedTodo.length,
+            itemBuilder: (context, index) {
+              if (completedTodo.isEmpty) {
+                return const Padding(
+                  padding: EdgeInsets.only(top: 300.0),
+                  child: Center(
+                    child: Text(
+                        "No Completed Todos Available, add new one using the  button below!"),
                   ),
-                ]),
-                child: Container(
-                  padding: const EdgeInsets.all(5),
-                  margin: const EdgeInsets.all(8),
-                  decoration: BoxDecoration(
-                    color: Colors.yellow[400],
-                    borderRadius: BorderRadius.circular(5),
+                );
+              } else {
+                return Slidable(
+                  startActionPane:
+                      ActionPane(motion: const ScrollMotion(), children: [
+                    SlidableAction(
+                      onPressed: (context) => ref
+                          .watch(todoProvider.notifier)
+                          .deleteTodo(completedTodo[index].todoId!),
+                      icon: Icons.delete,
+                      backgroundColor: Colors.redAccent,
+                    ),
+                  ]),
+                  child: Container(
+                    padding: const EdgeInsets.all(5),
+                    margin: const EdgeInsets.all(8),
+                    decoration: BoxDecoration(
+                      color: Colors.yellow[400],
+                      borderRadius: BorderRadius.circular(5),
+                    ),
+                    child: ListTile(
+                      title: Text(completedTodo[index].todoTitle),
+                      subtitle: Text(completedTodo[index].todoDescription),
+                      contentPadding: const EdgeInsets.all(5),
+                    ),
                   ),
-                  child: ListTile(
-                    title: Text(completedTodo[index].todoTitle),
-                    subtitle: Text(completedTodo[index].todoDescription),
-                    contentPadding: const EdgeInsets.all(5),
-                  ),
-                ),
-              );
-            }
-          }),
+                );
+              }
+            }),
+      ),
     );
   }
 }
