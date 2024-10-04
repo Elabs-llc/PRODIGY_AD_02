@@ -20,7 +20,6 @@ class MyHomePage extends ConsumerWidget {
           (todo) => todo.isCompleted == false,
         )
         .toList();
-
     // completed todo list
     List<TodoModel> completedTodo = todos
         .where(
